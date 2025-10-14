@@ -1,0 +1,27 @@
+[
+  {
+    "id": "1",
+    "name": "John Doe",
+    "resumeText": "Experienced Full Stack Developer with 2+ years of experience in building web applications using React, Node.js, Express, and MongoDB. Strong understanding of REST APIs and front-end design. Skilled in JavaScript, HTML, and CSS."
+  },
+  {
+    "id": "2",
+    "name": "Jane Smith",
+    "resumeText": "Software Engineer with 3 years of experience specializing in cloud-based full stack development. Proficient in React, Node.js, AWS, and Python. Worked on deploying scalable applications using AWS Lambda and EC2."
+  },
+  {
+    "id": "3",
+    "name": "Rahul Verma",
+    "resumeText": "Backend Developer with 4 years of experience in Java, Spring Boot, and MySQL. Designed APIs and optimized database queries. Looking to transition into full-stack development roles."
+  },
+  {
+    "id": "4",
+    "name": "Emily Johnson",
+    "resumeText": "Frontend Developer with 2 years of experience building responsive UIs using React, TypeScript, and Redux. Familiar with Node.js for basic backend integration. Strong eye for design and usability."
+  },
+  {
+    "id": "5",
+    "name": "Arjun Mehta",
+    "resumeText": "Full Stack Developer with experience in MERN stack and cloud platforms like Google Cloud and AWS. Developed multiple real-time web applications and automated CI/CD pipelines using GitHub Actions."
+  }
+]

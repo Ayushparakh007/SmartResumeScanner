@@ -170,6 +170,61 @@ router.post('/job-description', async (req: Request, res: Response) => {
 });
 
 /**
+ * POST /api/screen
+ * Bulk screening WITHOUT database persistence (for quick demos)
+ */
+router.post('/screen', async (req: Request, res: Response) => {
+  try {
+    const { candidates, jobDescription } = req.body;
+
+    if (!candidates || !Array.isArray(candidates) || !jobDescription) {
+      return res.status(400).json({ 
+        error: 'candidates array and jobDescription are required' 
+      });
+    }
+
+    const results: CandidateScore[] = [];
+    const geminiService = getGeminiService();
+
+    for (const candidate of candidates) {
+      try {
+        const scoringResult = await geminiService.scoreResume(
+          candidate.resumeText,
+          jobDescription
+        );
+
+        results.push({
+          candidateId: candidate.id,
+          candidateName: candidate.name,
+          ...scoringResult
+        });
+      } catch (error) {
+        console.error(`Failed to score candidate ${candidate.id}:`, error);
+        results.push({
+          candidateId: candidate.id,
+          candidateName: candidate.name,
+          score: 0,
+          justification: 'Failed to process',
+          matchedSkills: [],
+          missingSkills: [],
+          risks: ['Processing error']
+        });
+      }
+    }
+
+    // Sort by score descending
+    results.sort((a, b) => b.score - a.score);
+
+    res.json({
+      success: true,
+      data: results
+    });
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+/**
  * POST /api/screen-and-save
  * Bulk screening with database persistence
  * Creates job description and saves all scores
