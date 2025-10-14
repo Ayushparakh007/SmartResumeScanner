@@ -1,5 +1,14 @@
 # tests
 
-Add unit and integration tests here. Suggested structure:
-- Unit tests mirroring src modules
-- Integration tests for API endpoints
+Jest + TypeScript test suite
+
+## Running Tests
+```bash
+npm test              # Run all tests
+npm run test:watch   # Watch mode
+```
+
+## Structure
+- Unit tests for services and utilities
+- API integration tests (future)
+- Mock Gemini API responses for consistent testing

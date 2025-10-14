@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Resume Scanner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Smart Resume Scanner</h1>
+            <p class="subtitle">Intelligent resume parsing and screening powered by AI</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="parse">Parse Resume</button>
+            <button class="tab-btn" data-tab="score">Score Resume</button>
+            <button class="tab-btn" data-tab="screen">Bulk Screening</button>
+        </div>
+
+        <!-- Parse Resume Tab -->
+        <div id="parse-tab" class="tab-content active">
+            <div class="card">
+                <h2>Upload Resume</h2>
+                <form id="parse-form">
+                    <div class="form-group">
+                        <label for="resume-file">Select Resume (PDF or Text)</label>
+                        <input type="file" id="resume-file" accept=".pdf,.txt" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Parse Resume</button>
+                </form>
+                <div id="parse-result" class="result-box empty"></div>
+            </div>
+        </div>
+
+        <!-- Score Resume Tab -->
+        <div id="score-tab" class="tab-content">
+            <div class="card">
+                <h2>Score Resume Against Job</h2>
+                <form id="score-form">
+                    <div class="form-group">
+                        <label for="score-resume-text">Resume Text</label>
+                        <textarea id="score-resume-text" rows="8" placeholder="Paste resume text here..."
+                            required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="job-description">Job Description</label>
+                        <textarea id="job-description" rows="8" placeholder="Paste job description here..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Score Resume</button>
+                </form>
+                <div id="score-result" class="result-box empty"></div>
+            </div>
+        </div>
+
+        <!-- Bulk Screening Tab -->
+        <div id="screen-tab" class="tab-content">
+            <div class="card">
+                <h2>Bulk Candidate Screening</h2>
+                <form id="screen-form">
+                    <div class="form-group">
+                        <label for="screen-job-description">Job Description</label>
+                        <textarea id="screen-job-description" rows="6" placeholder="Paste job description here..."
+                            required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="candidates-json">Candidates JSON</label>
+                        <textarea id="candidates-json" rows="10"
+                            placeholder='[{"id": "1", "name": "John Doe", "resumeText": "..."}]' required></textarea>
+                        <small>Provide array of candidates with id, name, and resumeText fields</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Screen Candidates</button>
+                </form>
+                <div id="screen-result" class="result-box empty"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

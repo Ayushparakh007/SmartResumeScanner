@@ -1,0 +1,46 @@
+services:
+  - type: web
+    name: smart-resume-scanner
+    runtime: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: GEMINI_API_KEY
+        sync: false  # Set this manually in Render dashboard
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
+      - key: DB_HOST
+        fromDatabase:
+          name: smartresumescanner
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: smartresumescanner
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: smartresumescanner
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: smartresumescanner
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: smartresumescanner
+          property: password
+      - key: DB_SSL
+        value: true
+      - key: MAX_FILE_SIZE
+        value: 10485760
+      - key: UPLOAD_DIR
+        value: /tmp/uploads
+
+databases:
+  - name: smartresumescanner
+    databaseName: smartresumescanner_l2d6
+    user: smartresumescanner_l2d6_user
