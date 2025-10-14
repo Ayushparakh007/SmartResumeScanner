@@ -1,0 +1,63 @@
+MICHAEL CHEN
+Backend Software Engineer
+
+Contact: michael.chen@techmail.com
+Phone: +1 (555) 987-6543
+GitHub: github.com/michaelchen
+Location: Austin, TX
+
+SUMMARY
+Backend-focused software engineer with 4 years of experience building high-performance APIs and distributed systems. 
+Expert in Python, microservices architecture, and database optimization.
+
+SKILLS
+Languages: Python, JavaScript, Go, SQL
+Frameworks: Django, FastAPI, Flask, Express.js
+Databases: PostgreSQL, MySQL, MongoDB, Elasticsearch
+Cloud: AWS (Lambda, RDS, S3), Google Cloud Platform
+Tools: Docker, Kubernetes, Redis, RabbitMQ, Nginx
+Other: Microservices, REST APIs, GraphQL, CI/CD, Git
+
+WORK EXPERIENCE
+
+Backend Software Engineer
+CloudTech Solutions, Austin, TX
+January 2022 - Present
+• Architected and deployed microservices handling 100K+ API requests per minute
+• Designed database schema and optimized queries, improving performance by 70%
+• Implemented caching layer using Redis reducing database load by 50%
+• Built asynchronous task processing system using Celery and RabbitMQ
+• Wrote comprehensive unit and integration tests achieving 90% code coverage
+
+Software Engineer
+DataFlow Inc., Austin, TX
+July 2020 - December 2021
+• Developed RESTful APIs using Python FastAPI for data analytics platform
+• Integrated third-party APIs including Stripe, SendGrid, and Twilio
+• Set up monitoring and logging using Prometheus and Grafana
+• Participated in on-call rotation, resolving production issues promptly
+• Collaborated with frontend team to define API contracts and data models
+
+Junior Developer
+WebApps Co., Dallas, TX
+June 2019 - June 2020
+• Built backend services for customer-facing web applications
+• Wrote SQL queries and stored procedures for reporting
+• Assisted in migration from monolithic architecture to microservices
+• Fixed bugs and improved application stability
+
+EDUCATION
+
+Bachelor of Engineering in Software Engineering
+University of Texas at Austin
+Graduated: May 2019
+GPA: 3.6/4.0
+Dean's List: 2017, 2018
+
+ACHIEVEMENTS
+• Optimized core API endpoint reducing response time from 2s to 200ms
+• Led initiative to refactor legacy codebase, improving maintainability
+• Speaker at Austin Python Meetup on "Building Scalable APIs with FastAPI"
+
+INTERESTS
+Open source contribution, competitive programming, hiking

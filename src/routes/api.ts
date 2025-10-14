@@ -100,10 +100,11 @@ router.post('/parse-resume', upload.single('resume'), async (req: Request, res: 
 /**
  * POST /api/score
  * Score a resume against a job description
+ * Optional: candidateId and jobId to save score to database
  */
 router.post('/score', async (req: Request, res: Response) => {
   try {
-    const { resumeText, jobDescription } = req.body;
+    const { resumeText, jobDescription, candidateId, jobId, jobTitle } = req.body;
 
     if (!resumeText || !jobDescription) {
       return res.status(400).json({ error: 'resumeText and jobDescription are required' });
@@ -112,9 +113,56 @@ router.post('/score', async (req: Request, res: Response) => {
     const geminiService = getGeminiService();
     const scoringResult = await geminiService.scoreResume(resumeText, jobDescription);
 
+    // If candidateId and jobId provided, save score to database
+    let scoreId = null;
+    if (candidateId && jobId) {
+      try {
+        scoreId = await createScore(candidateId, jobId, scoringResult);
+        console.log(`✅ Score saved to database: ${scoreId}`);
+      } catch (dbError: any) {
+        console.error('Failed to save score to database:', dbError.message);
+        // Continue anyway - return the score even if DB save fails
+      }
+    }
+
     res.json({
       success: true,
-      data: scoringResult
+      data: {
+        ...scoringResult,
+        scoreId: scoreId
+      }
+    });
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+
+/**
+ * POST /api/job-description
+ * Create a new job description
+ */
+router.post('/job-description', async (req: Request, res: Response) => {
+  try {
+    const { title, descriptionText, requiredSkills } = req.body;
+
+    if (!title || !descriptionText) {
+      return res.status(400).json({ error: 'title and descriptionText are required' });
+    }
+
+    const jobId = await createJobDescription(
+      title,
+      descriptionText,
+      requiredSkills || []
+    );
+
+    res.json({
+      success: true,
+      message: 'Job description created successfully',
+      data: {
+        jobId: jobId,
+        title: title
+      }
     });
   } catch (error: any) {
     res.status(500).json({ error: error.message });
@@ -122,16 +170,27 @@ router.post('/score', async (req: Request, res: Response) => {
 });
 
 /**
- * POST /api/screen
- * Bulk screening of multiple candidates
+ * POST /api/screen-and-save
+ * Bulk screening with database persistence
+ * Creates job description and saves all scores
  */
-router.post('/screen', async (req: Request, res: Response) => {
+router.post('/screen-and-save', async (req: Request, res: Response) => {
   try {
-    const { candidates, jobDescription } = req.body;
+    const { candidates, jobDescription, jobTitle } = req.body;
 
-    if (!candidates || !Array.isArray(candidates) || !jobDescription) {
-      return res.status(400).json({ error: 'candidates array and jobDescription are required' });
+    if (!candidates || !Array.isArray(candidates) || !jobDescription || !jobTitle) {
+      return res.status(400).json({ 
+        error: 'candidates array, jobDescription, and jobTitle are required' 
+      });
     }
+
+    // Create job description in database
+    const jobId = await createJobDescription(
+      jobTitle,
+      jobDescription,
+      [] // We'll extract required skills from candidates
+    );
+    console.log(`✅ Job description created: ${jobId}`);
 
     const results: CandidateScore[] = [];
     const geminiService = getGeminiService();
@@ -142,6 +201,13 @@ router.post('/screen', async (req: Request, res: Response) => {
           candidate.resumeText,
           jobDescription
         );
+
+        // Save score to database
+        try {
+          await createScore(candidate.id, jobId, scoringResult);
+        } catch (dbError: any) {
+          console.error(`Failed to save score for candidate ${candidate.id}:`, dbError.message);
+        }
 
         results.push({
           candidateId: candidate.id,
@@ -167,7 +233,10 @@ router.post('/screen', async (req: Request, res: Response) => {
 
     res.json({
       success: true,
-      data: results
+      data: {
+        jobId: jobId,
+        results: results
+      }
     });
   } catch (error: any) {
     res.status(500).json({ error: error.message });

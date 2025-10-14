@@ -1,0 +1,62 @@
+SARAH JOHNSON
+Senior Full Stack Developer
+
+Email: sarah.johnson@email.com
+Phone: +1 (555) 123-4567
+LinkedIn: linkedin.com/in/sarahjohnson
+Location: San Francisco, CA
+
+PROFESSIONAL SUMMARY
+Experienced Full Stack Developer with 6+ years of expertise in building scalable web applications. 
+Strong background in Node.js, React, and cloud technologies. Passionate about clean code and agile methodologies.
+
+TECHNICAL SKILLS
+Programming Languages: JavaScript, TypeScript, Python, Java
+Frontend: React, Vue.js, HTML5, CSS3, Redux, Next.js
+Backend: Node.js, Express, FastAPI, RESTful APIs, GraphQL
+Databases: PostgreSQL, MongoDB, Redis, MySQL
+Cloud & DevOps: AWS (EC2, S3, Lambda), Docker, Kubernetes, CI/CD
+Tools: Git, Jest, Webpack, npm, Postman
+
+PROFESSIONAL EXPERIENCE
+
+Senior Full Stack Developer
+TechCorp Inc., San Francisco, CA
+March 2021 - Present
+• Led development of microservices architecture serving 2M+ users, improving response time by 40%
+• Built real-time chat application using WebSockets and Redis, handling 50K concurrent connections
+• Implemented CI/CD pipeline reducing deployment time from 2 hours to 15 minutes
+• Mentored team of 4 junior developers, conducting code reviews and technical training
+• Collaborated with product team to design and implement new features using Agile methodology
+
+Full Stack Developer
+StartupHub, San Francisco, CA
+June 2019 - February 2021
+• Developed e-commerce platform using React and Node.js, processing $2M+ in monthly transactions
+• Integrated payment systems (Stripe, PayPal) with robust error handling and security measures
+• Optimized database queries reducing page load time by 60%
+• Created RESTful APIs consumed by mobile apps (iOS and Android)
+• Implemented authentication system using JWT and OAuth 2.0
+
+Junior Web Developer
+Digital Solutions LLC, San Jose, CA
+August 2018 - May 2019
+• Built responsive websites using React and modern CSS frameworks
+• Worked with cross-functional teams to deliver projects on time and within budget
+• Fixed bugs and improved code quality across legacy applications
+
+EDUCATION
+
+Bachelor of Science in Computer Science
+University of California, Berkeley
+Graduated: May 2018
+GPA: 3.7/4.0
+
+CERTIFICATIONS
+• AWS Certified Solutions Architect - Associate (2022)
+• MongoDB Certified Developer (2020)
+
+PROJECTS
+• OpenWeather App - Built weather forecasting app using React and OpenWeather API
+• Task Manager - Full-stack CRUD application with user authentication and real-time updates
+• Portfolio Website - Personal portfolio built with Next.js and deployed on Vercel

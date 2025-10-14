@@ -15,6 +15,7 @@
     "db:status": "tsx src/db/migrate.ts status",
     "db:reset": "tsx src/db/migrate.ts reset",
     "db:drop": "tsx src/db/migrate.ts drop",
+    "db:test": "tsx src/scripts/testDatabase.ts",
     "view-candidates": "tsx src/scripts/viewCandidates.ts"
   },
   "keywords": [
