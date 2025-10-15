@@ -2,8 +2,6 @@
 
 An intelligent resume parsing and screening service that extracts structured data from resumes and computes a semantic fit score against a job description.
 
-Alternate name: Smart Resume Screener
-
 ## Objectives
 - Parse resumes (PDF/Text)
 - Extract structured data: skills, experience, education, contact info
@@ -20,9 +18,7 @@ Alternate name: Smart Resume Screener
 
 ## Architecture (proposed)
 - Backend API (choose one):
-  - Python (FastAPI) or
   - Node.js (Express/Fastify) or
-  - Java (Spring Boot)
 - Workers/Queue (optional): for batch parsing jobs
 - Object storage (optional): for raw resume files
 - Database: Postgres/SQLite (local dev) to store parsed entities and scores
